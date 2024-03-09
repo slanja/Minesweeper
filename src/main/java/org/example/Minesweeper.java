@@ -23,11 +23,21 @@ public class Minesweeper extends JFrame {
         panel.setLayout(layout);
         GridBagConstraints gridBag = new GridBagConstraints();
 
-        // generating field 10x10 of buttons
-        for (int x = 0; x < 10; x++) {
-            for (int y = 0; y < 10; y++) {
-                cells.CreateCell(gridBag, panel, x, y);
+        // setting up the game
+        int mineCount = 10;
+        int fieldSize = 9;
+
+        // generating field 9x9 of buttons
+        for (int x = 0; x < fieldSize; x++) {
+            for (int y = 0; y < fieldSize; y++) {
+                cells.CreateCell(gridBag, panel, x, y, mineCount);
             }
         }
+
+        // setting up mines :)
+        for (int i = 0; i < mineCount; i++) {
+            cells.SetMines(gridBag, panel, fieldSize, mineCount);
+        }
+
     }
 }
